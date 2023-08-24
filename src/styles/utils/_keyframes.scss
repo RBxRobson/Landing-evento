@@ -1,0 +1,92 @@
+@use "variables";
+
+/*------------------------------------*\
+           !animações usadas!
+\*------------------------------------*/
+
+
+// Animação para os confetes caindo no background//
+@keyframes slide_down {
+    to {
+        transform: translateY(150vh);
+    }
+}
+
+// Animação para o background gradiente //
+@keyframes gradient {
+    0% {
+        background-position: 50% 0%;
+    }
+
+    50% {
+        background-position: 50% 100%;
+    }
+}
+
+// Animação do glow para elementos de texto //
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px variables.$color-softgreen,
+            0 0 20px variables.$color-softgreen,
+            0 0 30px variables.$color-softgreen;
+    }
+
+    to {
+        text-shadow: 0 0 20px variables.$color-white,
+            0 0 20px variables.$color-white,
+            0 0 30px variables.$color-grey;
+    }
+}
+
+// Animação de elementos surgindo //
+@keyframes surgir {
+    to {
+        opacity: 1;
+    }
+}
+
+//** Logo abaixo as duas animações usadas para o efeito na borda do logo **//
+// Animação usada no logo para girar o elemento before //
+@keyframes rotate-360 {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+// Animação usada no logo para comprimir/expandir o elemento before //
+@keyframes running-X {
+    0% {
+        width: 0%;
+        height: 100%;
+    }
+
+    100% {
+        width: 105%;
+        height: 100%;
+    }
+}
+
+// Animação usada no before do button para girar o elemento a 180 graus // 
+@keyframes rotate-180 {
+    to {
+        transform: rotate(180deg);
+    }
+}
+
+// Animação usada para dar glow no hover do button //
+@keyframes hover-glow {
+    to {
+        text-shadow: 0 0 20px variables.$color-white,
+            0 0 20px variables.$color-white,
+        ;
+    }
+}
+
+// Efeito blink para a underline no countdown //
+@keyframes blink {
+    to {
+        box-shadow: 0 0 2px variables.$color-white,
+            0 0 10px variables.$color-white,
+            0 0 20px variables.$color-white;
+    }
+}

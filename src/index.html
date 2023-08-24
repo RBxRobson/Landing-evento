@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aniversario</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@400;700&family=Roboto&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.scss">
+</head>
+
+<body class="background">
+    <canvas class="confetti" id="my-canvas"></canvas>
+    <h2 class="logo"></h2>
+    <div class="spacing"></div>
+    <main class="hero">
+        <div class="hero__container">
+            <h1 class="hero__primary__text">Quer celebrar meu aniversário comigo?!</h1>
+            <div>
+                <h2 class="hero__secundary__text">Falta apenas..</h2>
+                <div class="countdown" id="countdown">
+                    <span style="opacity: 0;">100D</span>
+                    <span style="opacity: 0;">10D</span>
+                    <span style="opacity: 0;">10D</span>
+                    <span style="opacity: 0;">10D</span>
+                </div>
+            </div>
+            <button class="button" type="button"></button>
+        </div>
+    </main>
+    <script src="lib/confetti.js/index.min.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>

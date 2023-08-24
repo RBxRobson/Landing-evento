@@ -1,0 +1,9 @@
+@use "../utils/variables";
+
+// Aplicação do reset e cor padrão do texto //
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: variables.$color-white;
+}

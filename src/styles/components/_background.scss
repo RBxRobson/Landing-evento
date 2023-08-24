@@ -1,0 +1,20 @@
+@use "../utils/variables";
+
+//** Estilização dos dois elementos de background, confetes e gradiente **//
+// Background gradiente animado //
+.background {
+    // Gradiente aplicado //
+    background-image: linear-gradient(90deg, variables.$color-softgreen 0%, variables.$color-white 100%);
+    // Tamanho expandido para aplicar a animação //
+    background-size: 200% 100%;
+    // Animação aplicada para dar vida ao background //
+    animation: gradient 5s linear infinite alternate;
+}
+
+// Confetes com animação de caída no background //
+.confetti {
+    // Posicionamento da imagem usada e escolha da camada que irá ocupar(0) //
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+}

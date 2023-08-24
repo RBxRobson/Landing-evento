@@ -1,0 +1,57 @@
+@use "../utils/variables";
+@import "../utils/breakpoints";
+
+
+.countdown {
+    // Ajuste do posicionamento e o tamanho da box //
+    padding: .5rem 1rem;
+    padding-bottom: 10vh;
+    // Animação de surgimento //
+    opacity: 0;
+    animation: surgir 1s 1.5s ease-in-out forwards;
+
+    // Ajuste responsividade mobile //
+    @include breakpoints (mobile) {
+        padding: .5rem 0;
+    }
+
+    // Span que será implementado com javascript //
+    span {
+        // Ajuste da fonte //
+        font-size: 36px;
+        font-family: Roboto, sans-serif;
+        font-weight: bold;
+        // Ajuste do espaçamento //
+        padding: 0 1rem;
+        margin-left: 10px;
+        // Position relative para conter o before //
+        position: relative;
+        // Aplicação da cor e uma sombra no texto para dar maior destaque //
+        color: variables.$color-darkgreen;
+        text-shadow: 0 0 10px variables.$color-softgreen,
+            0 0 20px variables.$color-softgreen,
+            0 0 20px variables.$color-softgreen;
+
+        // Ajuste responsividade mobile //
+        @include breakpoints (mobile) {
+            font-size: 6.5vw;
+            padding: 0 .9rem;
+        }
+
+        // Before para fazer underline com efeito blink //
+        &::before {
+            // Posicionamento do elemento //
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            // Ajuste do tamanho, formato e cor da underline //
+            width: 100%;
+            height: 4px;
+            border-radius: 6px;
+            background-color: rgb(255, 255, 255);
+            // Aplicação do efeito blink a cada segundo descontado do countdown //
+            animation: blink 1s cubic-bezier(.74, .43, .25, 1) infinite;
+        }
+    }
+}

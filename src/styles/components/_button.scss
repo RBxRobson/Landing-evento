@@ -1,0 +1,83 @@
+@use "../utils/variables";
+@import "../utils/breakpoints";
+@import "../utils/mixins";
+
+//** Estilização button **//
+.button {
+    // Default do button //
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    // Definindo tamanho limite do button, sua fonte e seu formato//
+    padding: 2rem 16rem;
+    font-weight: bold;
+    font-family: Lobster Two, cursive;
+    font-size: 1.5em;
+    border-radius: 4px 52px;
+    // Position relative e overflow para conter os elementos criados no before e after //
+    position: relative;
+    overflow: hidden;
+    // Transição para o hover e active //
+    transition: .5s cubic-bezier(.41, 0, 0, .99);
+    // Animação glow para o texto contido e de surgimento //
+    opacity: 0;
+    animation: glow 2s cubic-bezier(.41, -0.04, 0, .99) infinite alternate,
+        surgir 1s 2s ease-in-out forwards;
+
+    // Ajuste responsividade mobile //
+    @include breakpoints (mobile) {
+        padding: 2rem 40vw;
+    }
+
+    // Before usado para criar a box que irá dar o efeito borda animada ao button //
+    &::before {
+        // Posicionamento para preparar elemento para a animação //
+        content: "";
+        position: absolute;
+        top: -5%;
+        left: -5%;
+        // Definindo tamanho da box e sua cor que será a borda //
+        width: 110%;
+        height: 110%;
+        background: variables.$color-white;
+        // Animação usada para rodar o elemento em 180 graus //
+        animation:
+            rotate-180 3s cubic-bezier(.47, .44, .35, 1.05) infinite;
+    }
+
+    &::after {
+        // Conteúdo textual do button e seu posicionamento //
+        content: "Quero celebrar!!";
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        @include centralize;
+        // Definindo tamanho da box, quanto menor maior a borda gerada no before //
+        width: 98.5%;
+        height: 91.5%;
+        // Colocando borda e ajustando formato do elemento para dar maior destaque //
+        border: 1px solid #fff;
+        border-radius: 4px 50px;
+        // Coloração do button //
+        background: linear-gradient(90deg,
+                variables.$color-softgreen 0%,
+                variables.$color-darkgreen 30%,
+                variables.$color-darkgreen 70%,
+                variables.$color-softgreen 100%);
+    }
+
+    // Hover aplicado para dar interação no button //
+    &:hover {
+        animation: hover-glow 1s ease-out forwards,
+            surgir 1s 2s ease-in-out forwards;
+        transform: scale(1.05) skewX(3deg);
+    }
+
+    // Active aplicado para dar feedback de clique //
+    &:active {
+        transform: translateY(5px);
+    }
+}

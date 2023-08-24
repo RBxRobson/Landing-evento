@@ -1,0 +1,68 @@
+@use "../utils/variables";
+@import "../utils/breakpoints";
+@import "../utils/mixins";
+
+//** Estilização do Hero **// 
+.hero {
+    // Centralizando e dando 100% de ocupação da tela visível ao Hero //
+    @include centralize;
+
+    // Alinhamento dos elementos ao centro, espaçamento e posicionamento na camada ideal(1) //
+    &__container {
+        @include centralize;
+        flex-direction: column;
+        gap: 2rem;
+        z-index: 1;
+
+        // Ajuste responsividade mobile //
+        @include breakpoints (mobile) {
+            gap: 1rem;
+            min-height: calc(100vh - 6rem);
+            justify-content: center;
+            padding-bottom: 1rem;
+        }
+    }
+
+    // Texto primário do Hero, estilização para trazer maior foco ao elemento //
+    &__primary__text {
+        // Texto e sua box //
+        font-family: Lobster Two, cursive;
+        font-size: 60px;
+        text-align: center;
+        padding: 2rem;
+        padding-bottom: 5vh;
+        // Animação glow e de surgimento do elemento // 
+        opacity: 0;
+        animation: surgir 1s .5s ease-in-out forwards,
+            glow 2s cubic-bezier(.41, -0.04, 0, .99) infinite alternate;
+
+        // Ajuste responsividade mobile //
+        @include breakpoints (mobile) {
+            font-size: 8vw;
+            padding: 0;
+        }
+    }
+
+    // Texto secundário do Hero, estilização para diferenciá-lo da chamada principal //
+    &__secundary__text {
+        // Ajuste tamanho do texto e sua box//
+        font-family: Roboto, sans-serif;
+        text-align: center;
+        font-size: 42px;
+        padding: .5rem 1rem;
+        // Aplicação da sombra e cor para suavizar o elemento //
+        color: variables.$color-darkgreen;
+        text-shadow: 0 0 10px variables.$color-softgreen,
+            0 0 20px variables.$color-softgreen,
+            0 0 20px variables.$color-softgreen;
+        // Animação de surgimento //
+        opacity: 0;
+        animation: surgir 1s 1s ease-in-out forwards;
+
+        // Ajuste responsividade mobile //
+        @include breakpoints (mobile) {
+            font-size: 6.5vw;
+            padding-bottom: 0;
+        }
+    }
+}

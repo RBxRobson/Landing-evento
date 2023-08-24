@@ -1,0 +1,76 @@
+@use "../utils/variables";
+@import "../utils/breakpoints";
+@import "../utils/mixins";
+
+//** Estilização do logo contido na parte superior esquerda do layout **//
+
+// Espaçamento no topo da landing para o hero não ocupar o espaço do logo //
+.spacing {
+    padding: 5rem;
+
+    // Ajuste responsividade mobile //
+    @include breakpoints (mobile) {
+        padding: 3rem;
+    }
+}
+
+// Estilização do logo //
+.logo {
+    // Tamanho da fonte do logo e sua sombra //
+    font-size: 2em;
+    font-family: Lobster Two, cursive;
+    text-shadow: 0 0 10px variables.$color-white, 0 0 10px variables.$color-white;
+    // Alinhamento do texto no centro //
+    @include centralize;
+    // Posicionamento do logo no layout //
+    position: absolute;
+    top: 2.5rem;
+    left: 10vw;
+    // Tamanho do logo, ajuste para formato circular, overflow para limitar o before //
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    // Animação de surgimento //
+    opacity: 0;
+    animation: surgir 1s ease-in-out forwards;
+
+    // Ajuste responsividade mobile //
+    @include breakpoints (mobile) {
+        font-size: 1.5em;
+        top: 1rem;
+        left: 1rem;
+        width: 52px;
+        height: 52px;
+    }
+
+    // Before usado para criar a box que irá dar o efeito borda animada ao logo //
+    &::before {
+        content: "";
+        // Posicionamento e reset para preparar elemento para a animação //
+        position: absolute;
+        width: 0%;
+        height: 0%;
+        // Cor da borda animada do logo //
+        background: variables.$color-darkgreen;
+        // Animação que causa o efeito borda animada (detalhes no arquivo /utils/_keyframes //
+        animation: running-X 2s cubic-bezier(.41, -0.04, 0, .99) infinite alternate,
+            rotate-360 2s linear infinite;
+    }
+
+    // After usado para sobrepor a box do before, gerando uma impressão de borda ao logo //
+    &::after {
+        // Conteúdo textual do logo, sua cor e posicionamento centralizado //
+        content: "RB";
+        color: variables.$color-darkgreen;
+        position: absolute;
+        @include centralize;
+        // Tamanho e formato da box sobreposta ao before, aqui define-se o tamanho da borda //
+        width: 92%;
+        height: 92%;
+        border-radius: 50%;
+        // Cor do background do logo e borda simples para melhorar seu destaque no layout //
+        background: radial-gradient(circle, variables.$color-white 0%, variables.$color-softgreen 100%);
+        border: 1px solid variables.$color-darkgreen;
+    }
+}
