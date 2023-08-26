@@ -2,8 +2,9 @@ const gulp = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const sourcemaps = require('gulp-sourcemaps');
 const htmlmin = require('gulp-htmlmin');
+const rename = require('gulp-rename');
 const uglify = require('gulp-uglify-es').default;
-const obfuscate = require('gulp-obfuscate');
+const obfuscate = require('gulp-javascript-obfuscator');
 
 function compress_sass() {
     return gulp.src('./src/styles/main.scss')
@@ -14,14 +15,15 @@ function compress_sass() {
 }
 
 function compress_html() {
+    const caminho = gulp.src(['./styles/*.css'], { read: false });
     return gulp.src('./src/index.html')
         .pipe(htmlmin({ collapseWhitespace: true }))
         .pipe(gulp.dest('./dist'));
 }
 
 function export_Lib() {
-    return gulp.src('./src/lib/confetti.js')
-        .pipe(gulp.dest('./dist/lib'));
+    return gulp.src('./src/lib/confetti.js/*')
+        .pipe(gulp.dest('./dist/lib/confetti.js'));
 }
 
 function compress_JS() {

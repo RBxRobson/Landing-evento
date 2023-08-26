@@ -13,7 +13,6 @@
   "dependencies": {
     "gulp": "^4.0.2",
     "gulp-htmlmin": "^5.0.1",
-    "gulp-obfuscate": "^0.2.9",
     "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
@@ -21,6 +20,7 @@
     "sass": "^1.66.1"
   },
   "devDependencies": {
+    "gulp-javascript-obfuscator": "^1.1.6",
     "gulp-uglify-es": "^3.0.0"
   }
 }
