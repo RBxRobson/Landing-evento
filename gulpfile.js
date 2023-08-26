@@ -2,7 +2,6 @@ const gulp = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const sourcemaps = require('gulp-sourcemaps');
 const htmlmin = require('gulp-htmlmin');
-const rename = require('gulp-rename');
 const uglify = require('gulp-uglify-es').default;
 const obfuscate = require('gulp-javascript-obfuscator');
 
