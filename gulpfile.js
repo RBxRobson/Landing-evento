@@ -2,7 +2,7 @@ const gulp = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const sourcemaps = require('gulp-sourcemaps');
 const htmlmin = require('gulp-htmlmin');
-const uglify = require('gulp-uglify');
+const uglify = require('gulp-uglify-es').default;
 const obfuscate = require('gulp-obfuscate');
 
 function compress_sass() {
@@ -28,11 +28,11 @@ function compress_JS() {
     return gulp.src('./src/scripts/*.js')
         .pipe(uglify())
         .pipe(obfuscate())
-        .pipe(gulp.dest('./dist/lib'));
+        .pipe(gulp.dest('./dist/scripts'));
 }
 
 
-exports.default = gulp.parallel(compress_sass, compress_html, export_Lib);
+exports.default = gulp.parallel(compress_sass, compress_html, export_Lib, compress_JS);
 exports.watch = function () {
     gulp.watch('./src/styles/*.scss', gulp.parallel(compress_sass, compress_html));
 }
