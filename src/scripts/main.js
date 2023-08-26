@@ -20,7 +20,8 @@ const countdown = setInterval(function () {
     const minutes = Math.floor((timeDistance % hoursMS) / minutesMS);
     const seconds = Math.floor((timeDistance % minutesMS) / 1000);
 
-    document.getElementById('countdown').innerHTML = `<span>${days}D</span> <span>${hours}H</span> <span>${minutes}M</span> <span>${seconds}S</span>`
+    const spanGroup = `<span>${days}D</span> <span>${hours}H</span> <span>${minutes}M</span> <span>${seconds}S</span>`
+    document.getElementById('countdown').innerHTML = spanGroup
 
     if (timeDistance < 0) {
         clearInterval(countdown);
