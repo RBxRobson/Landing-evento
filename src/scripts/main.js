@@ -5,9 +5,14 @@ confetti.render();
 
 
 const countdown = setInterval(function () {
-    const eventDate = new Date("Apr 24, 2024 00:00:00");
+    let eventDate = new Date("Apr 24, 2024 00:00:00");
+    let now = new Date();
+    
+    if (now > eventDate) {
+        eventDate.setFullYear(eventDate.getFullYear() + 1); // Adiciona um ano
+    }
+
     const eventTimeStamp = eventDate.getTime();
-    const now = new Date();
     const currentTimeStamp = now.getTime();
 
     const timeDistance = eventTimeStamp - currentTimeStamp;
@@ -20,11 +25,6 @@ const countdown = setInterval(function () {
     const minutes = Math.floor((timeDistance % hoursMS) / minutesMS);
     const seconds = Math.floor((timeDistance % minutesMS) / 1000);
 
-    const spanGroup = `<span>${days}D</span> <span>${hours}H</span> <span>${minutes}M</span> <span>${seconds}S</span>`
-    document.getElementById('countdown').innerHTML = spanGroup
-
-    if (timeDistance < 0) {
-        clearInterval(countdown);
-        document.getElementById('countdown').innerHTML = "evento expirado"
-    }
+    const spanGroup = `<span>${days}D</span> <span>${hours}H</span> <span>${minutes}M</span> <span>${seconds}S</span>`;
+    document.getElementById('countdown').innerHTML = spanGroup;
 }, 1000)
